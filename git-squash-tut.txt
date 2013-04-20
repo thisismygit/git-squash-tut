@@ -7,8 +7,8 @@ Then I'll link you to my example git repo so we can do some commit squashing tog
 [size="4"]1)  Download the example repo from my github account.  [/size]
 
 [code]
-$  git clone https://github.com/thisismygit/git-squash-tut.git
-$  cd git-squash-tut
+$  git clone https://github.com/thisismygit/git-squash-demo.git
+$  cd git-squash-demo
 [/code]
 
 [size="4"]2)  Check out the branches to see what I've done.[/size]
@@ -18,7 +18,7 @@ $  git branch
 * master
 [/code]
 
-Well we've got one local branch...  But if you navigate to github.com/thisismygit/git-squash-tut you will see that I have three branches.  You can list remote branches by the below command.  
+Well we've got one local branch...  But if you navigate to github.com/thisismygit/git-squash-demo you will see that I have three branches.  You can list remote branches by the below command.  
 
 [code]
 $  git branch -r
@@ -66,7 +66,7 @@ From the above graph you can see that all we've done in the master branch so far
 
 Those hashy looking numbers are commit IDs.  Anytime you want to specify a particular commit, you can copy and paste those hashes in...  So try the command `git checkout 81a0e2c` and you'll be able to "go back in time" to see what the working directory looked like at the time of that commit.  If you type `git log` you'll see the complete hash, these are actually the short 'pretty' versions of the hash.  
 
-It's also showing you where HEAD is (the commit that is currently checked out... usually a 'branch tip' which is a word for the latest commit of a branch).  Our local repo's HEAD (like the header on a record player) is placed on the tip of the count-up branch.  origin/master is where the HEAD of the remote repository is situated (that means the repo on github shows this commit by default when you navigate to github.com/thisismygit/git-squash-tut).  
+It's also showing you where HEAD is (the commit that is currently checked out... usually a 'branch tip' which is a word for the latest commit of a branch).  Our local repo's HEAD (like the header on a record player) is placed on the tip of the count-up branch.  origin/master is where the HEAD of the remote repository is situated (that means the repo on github shows this commit by default when you navigate to github.com/thisismygit/git-squash-demo).  
 
 The graph is also showing that the local branch tip for 'paragraph' and for 'count-up' is the same as the remote branch tips...  So the local and remote repos are perfectly in sync at this point.  That's all good to know, huh?
 [/spoiler]
