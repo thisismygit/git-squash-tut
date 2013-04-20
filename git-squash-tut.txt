@@ -4,14 +4,14 @@ To tutorial this subject, first I'll link you to my reference:  http://www.youtu
 
 Then I'll link you to my example git repo so we can do some commit squashing together.  
 
-1)  Download the example repo from my github account.  
+[size="4"]1)  Download the example repo from my github account.  [/size]
 
 [code]
 $  git clone https://github.com/thisismygit/git-squash-tut.git
 $  cd git-squash-tut
 [/code]
 
-2)  Check out the branches to see what I've done.
+[size="4"]2)  Check out the branches to see what I've done.[/size]
 
 [code]
 $  git branch
@@ -38,8 +38,8 @@ $  git checkout count-up
 There.  That was kind of an annoying step, but now the branches will show up nicely when we type [inline]$  git branch[/inline].  
 
 
-
-3)  Let's get oriented
+[size="4"]
+3)  Let's get oriented[/size]
 
 So you might feel somewhat in the dark as to what kind of repo you just downloaded.  Well, to fill yourself in on the details, you can run the below command to pull up a lovely tree-like representation of the branches and their commits.  
 
@@ -73,7 +73,7 @@ The graph is also showing that the local branch tip for 'paragraph' and for 'cou
 
 
 
-4)  Let's clean up the count-up branch to be one commit.  
+[size="4"]4)  Let's clean up the count-up branch to be one commit.  [/size]
 
 Let's analyze the count-up branch
 [code]
@@ -118,7 +118,7 @@ index b4e0610..766f886 100644
 [/code]
 
 
-5)  Amend the prior commit with the current working directory
+[size="4"]5)  Amend the prior commit with the current working directory[/size]
 
 You'll see that after running the reset command, [inline]git status[/inline] will show that there are modifications that need to be committed.  You likely already know how to just plain old commit them, but instead of just committing them, we're going to amend the last commit with what's in our working directory (essentially the status of 'counted to 10').  
 
@@ -138,7 +138,7 @@ $  glg
 [/code]
 
 
-6)  Rename Commit author as appropriate
+[size="4"]6)  Rename Commit author as appropriate[/size]
 
 Now if you're accepting a pull request from someone for a public github repository, you can change the author of the commit by the following line to either give credit to those responsible for the substantial portion of the code, or if you're a douche, you can use the command to plagurize someone elses work:
 
@@ -146,10 +146,10 @@ Now if you're accepting a pull request from someone for a public github reposito
 $  git commit --amend --author="Douchy McBag <douche@bag.com>"
 [/code]
 
-Plz note that if you maintain with a myopic policy of plagurizm, you're unlikely to get help from others on the network, even if they spot something wrong you did in your pull request, they'll be mum about it because you've been percieved as a rude code maintainer.  It's far better to accept their pull request and then make commits afterwards to clean things up as an editor such as modify the readme and change variable names and method locations.  
+please note that if you maintain with a myopic policy of plagurizm, you're unlikely to get help from others on the network, even if they spot something wrong you did in your pull request, they'll be mum about it because you've been percieved as a rude code maintainer.  It's far better to accept their pull request and then make commits afterwards to clean things up as an editor such as modify the readme and change variable names and method locations.  
 
 
-7)  Let's hop over to the paragraph branch and clena it.  
+[size="4"]7)  Let's hop over to the paragraph branch and clena it. [/size] 
 
 Try it on your own: make it into one commit.  
 
@@ -179,7 +179,7 @@ There's actually another way... to actually re-write the commit history.  It's a
 
 
 
-8)  Merge the branches into master
+[size="4"]8)  Merge the branches into master[/size]
 
 So to complete our project, let's merge the two branches into the master branch and then delete those branches and then look at glg.  
 
@@ -200,17 +200,19 @@ CONFLICT (content): Merge conflict in doc
 Automatic merge failed; fix conflicts and then commit the result.
 [/code]
 
-Oh fun!  We got the wonderful merge message!  This means we get to play a mini-game they planted into the git command as an easter egg (kind of the way the planted a flight simulator in microsoft word).  
+Oh fun!  We got the wonderful merge message!  This means we get to play a mini-game they planted into the git command as an easter egg (kind of the way M$ planted a flight simulator in Microsoft word).  
 
-This is called a "merge conflict" or a "merge fun party" as I sometimes call them.  You basically get these messages when git is unsure what you would like your resulting branch to look like because the file was modified in both the merger and the mergy.  You can get out of merge conflicts at any time with the following command which cancels the merge.
+This is called a "merge conflict" or a "merge fun party" as I sometimes call them.  You basically get these messages when git is unsure what you would like your resulting branch to look like because the same file was modified in both merging branches.  You can get out of merge conflicts at any time with the following command which cancels the merge.
 
 [code]
 $  git merge --abort
 [/code]
 
-But instead of running that command, we are going to solve the "merge fun party".  Markers have been placed in the conflicting file (doc was indicated as the conflicting file in the warning message).  The file will show you whats in "HEAD" which was the tip of the master branch, and the file will now indicate what was in the merging commit (the tip of the 'paragraph' branch).  
+But instead of running that command, we are going to solve the "merge fun party".  
 
-Have a look at what doc looks like now:
+Markers have been placed in the conflicting file ('doc' was indicated as the conflicting file in the warning message).  The file will show you what's in "HEAD" (which was the tip of the master branch) and what was in the merging commit (the tip of the 'paragraph' branch).  
+
+Have a look at what 'doc' looks like now:
 [code]
 $  cat doc
 Here is my doc file.  It can count to ten!
@@ -253,7 +255,7 @@ $  git commit -m "merged paragraph"
 [/code]
 
 
-Great job, now that we're done with the 'paragraph' branch, we should delete it because it's just ugly clutter at this point.  You might think it would be good to keep them around, but it's annoying because you need to merge them manually with HEAD as you continue developing, and then if you do want to go back into the branch and make changes.. it's just an annoying step.  It's usually easier to just create the branch again from scratch.  
+Great job, now that we're done with the 'paragraph' branch, we should delete it because it's just ugly clutter at this point.  You might think it would be good to keep them around, but it's annoying because you need to merge them manually with the master branch as you continue developing, and then if you do want to go back into the branch and make changes.. it's just an annoying step to solve merge conflicts that spring up.  It's usually easier to just create the branch again from scratch.  
 
 [code]
 $  git branch -D paragraph  # DANGER COMMAND use lowercase when possible
@@ -294,12 +296,10 @@ Date:   Wed Apr 17 17:21:43 2013 -0500
     counted up to 10
 
 commit 289b433a69f8714cc0d36983a94d6e4ae5afab87
-Author: TheNotary <no@mail.plz>
+Author: TheNotary <no@mail.please>
 Date:   Wed Apr 17 17:20:37 2013 -0500
 
     initial commit
 [/code]
 
-Beautiful.  Now you should be more comfortable pushing code to public git repos in a clean manor.  Although some people like to watch the progress so if it's a large pull request, you might want to not edit your commit history unless asked to do so.    
-
-
+Beautiful.  Now you should be more comfortable pushing code to public git repos in a clean manor and also just cleaning things up for your own needs.  You should note that some people like to watch the progress of your pull requests so if it's a large pull request, you might want to abstain from editing your commit history unless asked to do so.
